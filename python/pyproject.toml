@@ -1,0 +1,35 @@
+[tool.poetry]
+name = "statham-therapist"
+version = "0.1.0"
+description = "Statham therapist"
+authors = ["Your Name <your@email.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+fastapi = "*"
+uvicorn = { version = "*", extras = ["standard"] }
+httpx = "*"
+
+[tool.poetry.dev-dependencies]
+pytest = "*"
+pylint = "*"
+flake8 = "*"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.pylint]
+max-line-length = 120
+max-args = 6
+good-names=["i", "j", "k", "df"]
+
+# C0103 - var snake_case warn
+# C0114 - missing-module-docstring
+# C0115 - missing-class-docstring
+# C0116 - missing-function-docstring
+# W0718 - broad-exception-caught
+# W0719 - broad-exception-raised
+# R0903 - too-few-public-methods
+# W0511 - fixme
+disable=["C0103", "C0114", "C0115", "C0116", "W0718", "W0719", "R0903", "W0511"]
