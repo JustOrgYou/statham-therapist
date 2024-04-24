@@ -1,17 +1,21 @@
 [tool.poetry]
-name = "statham-therapist"
+name = "statham-therapist-backend"
 version = "0.1.0"
 description = "Statham therapist"
-authors = ["Your Name <your@email.com>"]
+authors = ["Arina Kharlamova <a.kharlamova@innopolis.university>"]
 
 [tool.poetry.dependencies]
 python = "^3.11"
 fastapi = "*"
 uvicorn = { version = "*", extras = ["standard"] }
 httpx = "*"
+python-multipart = "^0.0.9"
 
 [tool.poetry.dev-dependencies]
-pytest = "*"
+pytest = "^8.0.1"
+pytest-mock = "^3.11.0"
+pytest-cov = "*"
+mock = "^5.1.0"
 pylint = "*"
 flake8 = "*"
 
@@ -22,7 +26,8 @@ build-backend = "poetry.core.masonry.api"
 [tool.pylint]
 max-line-length = 120
 max-args = 6
-good-names=["i", "j", "k", "df"]
+good-names = ["i", "j", "k", "df"]
+
 
 # C0103 - var snake_case warn
 # C0114 - missing-module-docstring
@@ -32,4 +37,13 @@ good-names=["i", "j", "k", "df"]
 # W0719 - broad-exception-raised
 # R0903 - too-few-public-methods
 # W0511 - fixme
-disable=["C0103", "C0114", "C0115", "C0116", "W0718", "W0719", "R0903", "W0511"]
+disable = [
+    "C0103",
+    "C0114",
+    "C0115",
+    "C0116",
+    "W0718",
+    "W0719",
+    "R0903",
+    "W0511",
+]
