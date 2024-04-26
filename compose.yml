@@ -1,0 +1,8 @@
+services:
+  frontend:
+    build: frontend
+    ports:
+      - 80:8501
+    env_file: ".env"
+  backend:
+    build: backend
