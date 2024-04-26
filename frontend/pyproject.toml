@@ -1,0 +1,60 @@
+[tool.poetry]
+name = "statham-therapist-frontend"
+version = "0.1.0"
+description = "Statham therapist"
+authors = ["Arina Kharlamova <a.kharlamova@innopolis.university>"]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+streamlit = "^1.33.0"
+langchain = "^0.1.16"
+langchain-openai = "^0.1.4"
+streamlit-cookies-manager = "^0.2.0"
+requests = "^2.31.0"
+
+[tool.poetry.dev-dependencies]
+pytest = "^8.0.1"
+pytest-mock = "^3.11.0"
+pytest-cov = "*"
+mock = "^5.1.0"
+pylint = "*"
+flake8 = "*"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.pylint]
+max-line-length = 120
+max-args = 6
+good-names = ["i", "j", "k", "df"]
+
+
+# C0103 - var snake_case warn
+# C0114 - missing-module-docstring
+# C0115 - missing-class-docstring
+# C0116 - missing-function-docstring
+# W0718 - broad-exception-caught
+# W0719 - broad-exception-raised
+# R0903 - too-few-public-methods
+# W0511 - fixme
+disable = [
+    "C0103",
+    "C0114",
+    "C0115",
+    "C0116",
+    "W0718",
+    "W0719",
+    "R0903",
+    "W0511",
+]
+
+
+[tool.pytest.ini_options]
+filterwarnings = [
+    'ignore:Type google._upb._message.MessageMapContainer uses PyType_Spec with a metaclass that has custom tp_new. This is deprecated and will no longer be allowed in Python 3.14.:DeprecationWarning',
+    'ignore:Type google._upb._message.ScalarMapContainer uses PyType_Spec with a metaclass that has custom tp_new. This is deprecated and will no longer be allowed in Python 3.14.:DeprecationWarning',
+]
+
+[tool.coverage.run]
+omit = ["tests/*"]
