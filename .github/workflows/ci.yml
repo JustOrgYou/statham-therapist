@@ -98,7 +98,7 @@ jobs:
       - name: "Prepare .env"
         env:
           DEPLOY_ENV: ${{ secrets.DEPLOY_ENV }}
-        run: echo -n $DEPLOY_ENV > .env
+        run: echo "$DEPLOY_ENV" > .env
 
       - uses: matiasnu/github-action-ssh-docker-compose@master
         name: Docker Compose Deploy
