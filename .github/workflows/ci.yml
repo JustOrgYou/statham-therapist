@@ -88,6 +88,20 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
+  deploy:
+    needs: sonarqube_analysis
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - uses: alex-ac/github-action-ssh-docker-compose@master
+        name: Docker Compose Deploy
+        with:
+          ssh_host: 121.127.33.62
+          ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
+          ssh_user: ubuntu
+
   ui_tests:
     runs-on: ubuntu-latest
     steps:
