@@ -89,6 +89,7 @@ def test_get_user_id_not_contains(MockCookieManager):
 
 
 @mock.patch("utils.display_msg")
+@mock.patch.dict(os.environ, {"OPENAI_API_KEY": "TEST"})
 def test_enable_chat_history_has_session(mock_display_msg, mocker):
     MockedSession = mocker.MagicMock()
 
@@ -117,6 +118,7 @@ def test_enable_chat_history_has_session(mock_display_msg, mocker):
 
 @mock.patch("uuid.uuid4", return_value=TEST_UUID)
 @mock.patch("utils.display_msg")
+@mock.patch.dict(os.environ, {"OPENAI_API_KEY": "TEST"})
 def test_enable_chat_history_no_session(mock_display_msg, _, mocker):
     MockedSession = mocker.MagicMock()
 
