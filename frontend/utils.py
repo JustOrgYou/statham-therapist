@@ -36,13 +36,13 @@ def enable_chat_history(func):
 def display_msg(msg):
     author = msg["role"]
     content = msg["content"]
-    id = msg["id"]
+    user_id = msg["id"]
 
     with st.chat_message(author):
         st.write(content)
 
         if author == "assistant" and "saved" not in msg:
-            favorites_button(id, msg["content"])
+            favorites_button(user_id, msg["content"])
 
 
 def favorites_button(id, response):

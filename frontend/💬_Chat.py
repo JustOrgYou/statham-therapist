@@ -33,7 +33,7 @@ PROMPT = PromptTemplate(input_variables=["history", "input"], template=DEFAULT_T
 
 
 class StathamChatbot:
-    def setup_chain(_self):
+    def setup_chain(self):
         if "chain" not in st.session_state:
             memory = ConversationBufferMemory()
             llm = ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0, streaming=True)

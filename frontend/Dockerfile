@@ -2,7 +2,7 @@ FROM python:3.11
 
 WORKDIR /app
 
-RUN apt-get update && apt-get install -y locales
+RUN apt-get update && apt-get install -y locales && apt-get clean
 
 RUN echo "LC_ALL=en_US.UTF-8" >> /etc/environment
 RUN echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
