@@ -18,6 +18,6 @@ def enable_chat_history(func):
 @mock.patch("utils.enable_chat_history", enable_chat_history)
 def test_chat(_, setup_cookies):
 
-    at = AppTest.from_file("../💬_Chat.py").run()
+    AppTest.from_file("../💬_Chat.py").run()
 
     setup_cookies.assert_called_once_with()

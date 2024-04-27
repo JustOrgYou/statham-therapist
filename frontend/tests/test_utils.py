@@ -172,7 +172,7 @@ def test_display_message_assistant_saved(mock_favorites_button, mock_write, mock
 @mock.patch("streamlit.chat_message")
 @mock.patch("streamlit.write")
 @mock.patch("utils.favorites_button")
-def test_display_message_assistant_saved(mock_favorites_button, mock_write, mock_chat_message):
+def test_display_message_user(mock_favorites_button, mock_write, mock_chat_message):
     test_message = {"id": TEST_UUID, "role": "user", "content": "Test message"}
 
     utils.display_msg(test_message)
