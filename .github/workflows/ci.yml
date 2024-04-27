@@ -101,6 +101,7 @@ jobs:
           ssh_host: 121.127.33.62
           ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
           ssh_user: ubuntu
+          docker_compose_filename: compose.yml
 
   ui_tests:
     runs-on: ubuntu-latest
