@@ -9,7 +9,7 @@ on:
       - master
 
 jobs:
-  python:
+  static_analysis:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -51,6 +51,7 @@ jobs:
 
   sonarqube_analysis:
     runs-on: ubuntu-latest
+    needs: static_analysis
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
@@ -86,21 +87,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-
-  security_scanning:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
-      - name: Setup Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: 3.11
-
-      - name: Security Scanning
-        run: |
-          # Integrate Snyk or SonarQube security scanning command here.
 
   ui_tests:
     runs-on: ubuntu-latest

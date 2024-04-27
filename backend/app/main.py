@@ -1,5 +1,6 @@
 from typing import Annotated
 from fastapi import Depends, FastAPI, Form
+from fastapi.responses import JSONResponse
 
 from .database import Database
 from .dependencies import get_db
@@ -20,4 +21,4 @@ def get_favorites(user_id: str, db: Database = Depends(get_db)):
 @ app.post("/favorites")
 def add_favorite(user_id: Annotated[str, Form()], response: Annotated[str, Form()], db: Database = Depends(get_db)):
     db.add_favorite(user_id, response)
-    return {"user_id": user_id, "response": response}
+    return JSONResponse({"user_id": user_id, "response": response})
