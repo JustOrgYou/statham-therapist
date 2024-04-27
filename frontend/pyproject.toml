@@ -58,4 +58,4 @@ filterwarnings = [
 
 [tool.coverage.run]
 omit = ["tests/*"]
-relative_files = true
+relative_files = false
