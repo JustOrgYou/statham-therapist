@@ -72,7 +72,7 @@ jobs:
 
       - name: "[Backend] Coverage reports"
         working-directory: ./backend
-        run: poetry run pytest tests/ --cov=app --cov-report=xml && sed -i "s|$PWD|.|g" backend/coverage.xml
+        run: poetry run pytest tests/ --cov=app --cov-report=xml && sed -i "s|$PWD|./backend|g" coverage.xml
 
       - name: "[Frontend] Install"
         working-directory: ./frontend
@@ -80,7 +80,7 @@ jobs:
 
       - name: "[Frontend] Coverage reports"
         working-directory: ./frontend
-        run: poetry run pytest tests/ --cov=. --cov-report=xml && sed -i "s|$PWD|.|g" frontend/coverage.xml
+        run: poetry run pytest tests/ --cov=. --cov-report=xml && sed -i "s|$PWD|./frontend|g" coverage.xml
 
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
