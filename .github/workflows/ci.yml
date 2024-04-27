@@ -95,7 +95,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - uses: alex-ac/github-action-ssh-docker-compose@master
+      - uses: matiasnu/github-action-ssh-docker-compose@master
         name: Docker Compose Deploy
         with:
           ssh_host: 121.127.33.62
