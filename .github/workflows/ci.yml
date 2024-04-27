@@ -60,9 +60,32 @@ jobs:
         with:
           python-version: 3.11
 
-      - name: SonarQube Scan
+      - name: Install poetry
         run: |
-          # Integrate SonarQube scanning command here.
+          python -m pip install --upgrade pip
+          pip install poetry
+
+      - name: "[Backend] Install"
+        working-directory: ./backend
+        run: poetry install
+
+      - name: "[Backend] Coverage reports"
+        working-directory: ./backend
+        run: poetry run pytest tests/ --cov=app --cov-report=xml
+
+      - name: "[Frontend] Install"
+        working-directory: ./frontend
+        run: poetry install
+
+      - name: "[Frontend] Coverage reports"
+        working-directory: ./frontend
+        run: poetry run pytest tests/ --cov=. --cov-report=xml
+
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
   security_scanning:
     runs-on: ubuntu-latest
