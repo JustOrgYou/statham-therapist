@@ -95,6 +95,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
+      - name: "Prepare .env"
+        env:
+          DEPLOY_ENV: ${{ secrets.DEPLOY_ENV }}
+        run: echo $DEPLOY_ENV > .env
+
       - uses: matiasnu/github-action-ssh-docker-compose@master
         name: Docker Compose Deploy
         with:
