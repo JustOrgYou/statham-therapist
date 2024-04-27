@@ -47,3 +47,6 @@ disable = [
     "R0903",
     "W0511",
 ]
+
+[tool.coverage.run]
+relative_files = true
