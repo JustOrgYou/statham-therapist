@@ -156,7 +156,7 @@ jobs:
           filename: k6_tests/perfomance.js
 
   capacity_testing:
-    needs: ui_tests
+    needs: performance_testing
     runs-on: ubuntu-latest
 
     steps:
