@@ -129,7 +129,7 @@ jobs:
 
       - name: Install dependencies
         working-directory: ./selenium_tests
-        run: npm -D i
+        run: npm ci
 
       - name: Run ui tests
         working-directory: ./selenium_tests
