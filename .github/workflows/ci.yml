@@ -157,6 +157,8 @@ jobs:
           cloud: true
           token: ${{ secrets.K6_CLOUD_API_TOKEN }}
           filename: ./k6_tests/perfomance.js
+        env:
+          K6_CLOUD_PROJECT_ID: 3694139
 
   capacity_testing:
     needs: performance_testing
@@ -172,3 +174,5 @@ jobs:
           cloud: true
           token: ${{ secrets.K6_CLOUD_API_TOKEN }}
           filename: ./k6_tests/capacity.js
+        env:
+          K6_CLOUD_PROJECT_ID: 3694139
