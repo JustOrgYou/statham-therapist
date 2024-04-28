@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Setup Python
         uses: actions/setup-python@v2
@@ -54,7 +54,7 @@ jobs:
     needs: static_analysis
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Setup Python
         uses: actions/setup-python@v2
@@ -93,7 +93,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: "Prepare .env"
         env:
@@ -126,7 +126,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Setup node
         uses: actions/setup-node@v3
@@ -153,16 +153,19 @@ jobs:
         with:
           cloud: true
           token: ${{ secrets.K6_CLOUD_API_TOKEN }}
-          filename: k6_tests/perfomance.js
+          filename: ./k6_tests/perfomance.js
 
   capacity_testing:
     needs: performance_testing
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
       - name: Run k6 capacity test
         uses: grafana/k6-action@v0.3.1
         with:
           cloud: true
           token: ${{ secrets.K6_CLOUD_API_TOKEN }}
-          filename: k6_tests/capacity.js
+          filename: ./k6_tests/capacity.js
