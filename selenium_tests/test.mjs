@@ -1,11 +1,18 @@
 import { Builder, By, Key, until, Condition } from "selenium-webdriver";
+import { Options } from "selenium-webdriver/chrome.js";
 import { assert } from "chai";
+
+const chromeOptions = new Options();
+chromeOptions.addArguments("--disable-dev-shm-usage");
+chromeOptions.addArguments("--no-sandbox");
+chromeOptions.addArguments("--headless");
 
 async function getDriver() {
   const host = process.env.SELENIUM || "selenium";
   return await new Builder()
     .usingServer(`http://${host}:4444`)
     .forBrowser("chrome")
+    .setChromeOptions(chromeOptions)
     .build();
 }
 
