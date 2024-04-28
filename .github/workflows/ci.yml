@@ -148,8 +148,21 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Run k6 cloud test
+      - name: Run k6 perfomance test
         uses: grafana/k6-action@v0.3.1
         with:
           cloud: true
           token: ${{ secrets.K6_CLOUD_API_TOKEN }}
+          filename: k6_tests/perfomance.js
+
+  capacity_testing:
+    needs: ui_tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Run k6 capacity test
+        uses: grafana/k6-action@v0.3.1
+        with:
+          cloud: true
+          token: ${{ secrets.K6_CLOUD_API_TOKEN }}
+          filename: k6_tests/capacity.js

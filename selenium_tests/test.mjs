@@ -219,10 +219,17 @@ describe("favorites", async function () {
     await driver.wait(until.elementLocated(messageSelector), 3000);
 
     await driver.wait(async function (driver) {
-      const element = await driver.findElement(messageSelector);
-      const messageText = await element.getText();
+      const elements = await driver.findElements(messageSelector);
 
-      return messageText == savedText;
+      for (const element of elements) {
+        const messageText = await element.getText();
+
+        if (messageText == savedText) {
+          return true;
+        }
+      }
+
+      return false;
     }, 5000);
   });
 });
