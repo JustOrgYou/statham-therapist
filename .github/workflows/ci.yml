@@ -146,30 +146,10 @@ jobs:
   performance_testing:
     needs: ui_tests
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
-      - name: Setup Python
-        uses: actions/setup-python@v2
+      - name: Run k6 cloud test
+        uses: grafana/k6-action@v0.3.1
         with:
-          python-version: 3.11
-
-      - name: Perform performance testing
-        run: |
-          # Integrate performance testing command here.
-
-  capacity_testing:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
-      - name: Setup Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: 3.11
-
-      - name: Capacity Testing
-        run: |
-          # Integrate k6 capacity testing command here.
+          cloud: true
+          token: ${{ secrets.K6_CLOUD_API_TOKEN }}
