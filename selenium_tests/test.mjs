@@ -23,7 +23,7 @@ describe("chat", async function () {
   let driver;
 
   beforeEach(async function () {
-    driver = getDriver();
+    driver = await getDriver();
   });
 
   afterEach(async function () {
@@ -97,7 +97,7 @@ describe("favorites", async function () {
   let driver;
 
   beforeEach(async function () {
-    driver = getDriver();
+    driver = await getDriver();
   });
 
   afterEach(async function () {
