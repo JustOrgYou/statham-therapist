@@ -1,6 +1,14 @@
 import { Builder, By, Key, until, Condition } from "selenium-webdriver";
 import { assert } from "chai";
 
+async function getDriver() {
+  const host = process.env.SELENIUM || "selenium";
+  return await new Builder()
+    .usingServer(`http://${host}:4444`)
+    .forBrowser("chrome")
+    .build();
+}
+
 until.elementIsNotPresent = function elementIsNotPresent(locator) {
   return new Condition(
     "for no element to be located " + locator,
@@ -15,10 +23,7 @@ describe("chat", async function () {
   let driver;
 
   beforeEach(async function () {
-    driver = await new Builder()
-      .usingServer("http://selenium:4444")
-      .forBrowser("chrome")
-      .build();
+    driver = getDriver();
   });
 
   afterEach(async function () {
@@ -92,10 +97,7 @@ describe("favorites", async function () {
   let driver;
 
   beforeEach(async function () {
-    driver = await new Builder()
-      .usingServer("http://selenium:4444")
-      .forBrowser("chrome")
-      .build();
+    driver = getDriver();
   });
 
   afterEach(async function () {
