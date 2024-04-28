@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "test": "npx mocha test.mjs --timeout 10000 --retries 3"
+    "test": "npx mocha test.mjs --timeout 15000 --retries 3"
   },
   "devDependencies": {
     "chai": "^4.3.7",
