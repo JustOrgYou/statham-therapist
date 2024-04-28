@@ -2,6 +2,12 @@ import http from "k6/http";
 import { sleep } from "k6";
 
 export const options = {
+  ext: {
+    loadimpact: {
+      projectID: 3694139,
+      name: "statham-therapist",
+    },
+  },
   cloud: {
     distribution: {
       "amazon:us:ashburn": { loadZone: "amazon:us:ashburn", percent: 100 },
