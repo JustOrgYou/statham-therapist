@@ -1,0 +1,11 @@
+{
+  "scripts": {
+    "test": "npx mocha test.mjs --timeout 10000 --retries 3"
+  },
+  "devDependencies": {
+    "chai": "^4.3.7",
+    "mocha": "^10.2.0",
+    "mocha-junit-reporter": "^2.2.0",
+    "selenium-webdriver": "^4.8.0"
+  }
+}
