@@ -112,10 +112,17 @@ jobs:
     needs: deploy
     runs-on: ubuntu-latest
 
+    container:
+      image: node:19
+
     services:
       selenium:
         image: selenium/standalone-chrome
-        options: --shm-size=2gb
+        options: --shm-size=6gb
+        env:
+          START_XVFB: false
+          SE_NODE_OVERRIDE_MAX_SESSIONS: true
+          SE_NODE_MAX_SESSIONS: 5
 
     steps:
       - name: Checkout repository
