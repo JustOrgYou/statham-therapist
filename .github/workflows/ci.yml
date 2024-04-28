@@ -148,6 +148,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
       - name: Run k6 perfomance test
         uses: grafana/k6-action@v0.3.1
         with:
